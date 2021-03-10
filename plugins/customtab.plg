@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "customtab">
 <!ENTITY author    "Andrew Zawadzki">
-<!ENTITY version   "2020.10.21">
-<!ENTITY md5       "a6a2d468d865f91d22879a249d84c475">
+<!ENTITY version   "2021.03.10">
+<!ENTITY md5       "92954b3528f0a7bb2e5e6b958370af22">
 <!ENTITY launch    "Utilities/Customtab">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY github    "Squidly271/customtab">
@@ -13,6 +13,9 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="edit">
 
 <CHANGES>
+###2021.03.10
+- Permission Fix
+
 ###2020.10.21
 - Compatibility Fixes
 
