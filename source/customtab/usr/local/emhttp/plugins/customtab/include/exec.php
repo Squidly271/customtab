@@ -22,6 +22,13 @@ function create_tab_settings($index,$settings,$addFlag = false) {
   } else {
     $selectURL = 'selected'; $pageoptions = "disabled";
   } */
+	$URLoptions = "";
+	$selectBookmark = "";
+	$selectPage = "";
+	$pageoptions = "";
+	$bookmarkoptions = "";
+	$selectTab = "";
+	$selectURL = "";
 	switch ($settings['selectPage']) {
 		case 'page':
 			$selectPage = 'selected';
@@ -59,8 +66,8 @@ function create_tab_settings($index,$settings,$addFlag = false) {
   $o .= "<option value=''>Select a page file</option>";
 	usort($pageFiles,"mysort");
   foreach ($pageFiles as $page) {
-		if ( ! trim($page['Title']) ) continue;
-		if ( strpos($page['Title'],"$") !== false) continue;
+		if ( ! trim($page['Title']??"") ) continue;
+		if ( strpos($page['Title']??"","$") !== false) continue;
     $o .= "<option value='{$page['CustomTabSource']}'><strong>{$page['Title']}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(".str_replace("/usr/local/emhttp/plugins/","",$page['CustomTabSource']).")</option>";
   }
   $o .= "</select></dl>";  
@@ -81,12 +88,13 @@ function create_tab_settings($index,$settings,$addFlag = false) {
 }
 
 function mySort($a,$b) {
-	return strcmp($a['Title'],$b['Title']);
+	return strcmp($a['Title']??"",$b['Title']??"");
 }
 
 function make_tabs($settings,$flag = false) {
   $pageFiles = json_decode(file_get_contents("/tmp/customtab/pagefiles.json"),true);
   $index = 0;
+	$o = "";
   foreach ($settings as $tab) {
     $set = $flag ? $tab : tabArray($tab);
     $o .= create_tab_settings($index,$set);
@@ -117,6 +125,7 @@ function enableAddTab() {
 
 switch ($_POST['action']) {
   case 'get_tabs_init':
+		$pageINI = "";
     exec("find /usr/local/emhttp/plugins -name '*.page'",$pageFiles);
     foreach ($pageFiles as $page) {
       $file = explode("\n",trim(file_get_contents($page)));
@@ -128,7 +137,7 @@ switch ($_POST['action']) {
         $pageINI .= "$line\n";
       }
       $pageVars = parse_ini_string($pageINI);
-      if ( $pageVars['Type'] == "menu" ) {
+      if ( ($pageVars['Type'] ?? "") == "menu" ) {
         continue;
       }
       $pageVars['CustomTabSource'] = $page;

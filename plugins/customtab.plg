@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "customtab">
 <!ENTITY author    "Andrew Zawadzki">
-<!ENTITY version   "2021.03.10">
-<!ENTITY md5       "92954b3528f0a7bb2e5e6b958370af22">
+<!ENTITY version   "2023.02.26">
+<!ENTITY md5       "c81a9c5eefb596543529a90b497228f2">
 <!ENTITY launch    "Utilities/Customtab">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY github    "Squidly271/customtab">
@@ -13,6 +13,9 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="edit">
 
 <CHANGES>
+###2023.02.26
+- PHP8 Compliance
+
 ###2021.03.10
 - Permission Fix
 
@@ -94,7 +97,7 @@ The 'post-install' script
 echo ""
 echo "----------------------------------------------------"
 echo " &name; has been installed."
-echo " Copyright 2015-2017, Squid"
+echo " Copyright 2015-2023, Squid"
 echo " Version: &version;"
 echo "----------------------------------------------------"
 echo ""
