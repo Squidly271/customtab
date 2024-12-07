@@ -52,7 +52,7 @@ function create_tab_settings($index,$settings,$addFlag = false) {
   $o .= "<option value='page' $selectPage>Built-In Page</option>";
 	$o .= "<option value='bookmark' $selectBookmark>URL (Open Same Tab)</option>";
 	$o .= "<option value='tab' $selectTab>URL (Open New Tab) * popups MUST be enabled</option>";
-  $o .= "<select>";
+  $o .= "</select>";
   $o .= "</dl>";
   $o .= "<dt>Tab Name:</dt>";
   $o .= "<dl><input type='text' id='customtabname$index' class='narrow setting' maxlength='20' value='{$settings['name']}' placeholder='Custom$index'></dl>";
@@ -68,7 +68,7 @@ function create_tab_settings($index,$settings,$addFlag = false) {
   foreach ($pageFiles as $page) {
 		if ( ! trim($page['Title']??"") ) continue;
 		if ( strpos($page['Title']??"","$") !== false) continue;
-    $o .= "<option value='{$page['CustomTabSource']}'><strong>{$page['Title']}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(".str_replace("/usr/local/emhttp/plugins/","",$page['CustomTabSource']).")</option>";
+    $o .= "<option value='{$page['CustomTabSource']}'>{$page['Title']}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(".str_replace("/usr/local/emhttp/plugins/","",$page['CustomTabSource']).")</option>";
   }
   $o .= "</select></dl>";  
   $o .= "<dt>Width:</dt>";
