@@ -1,5 +1,10 @@
 #!/usr/bin/php
 <?PHP
+###################################################
+#                                                 #
+# Custom Tab copyright 2017-2025, Andrew Zawadzki #
+#                                                 #
+###################################################
 if ( ! file_exists("/boot/config/plugins/customtab/customtab.cfg") ) {
   return;
 }

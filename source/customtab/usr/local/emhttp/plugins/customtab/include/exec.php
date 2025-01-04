@@ -1,5 +1,9 @@
 <?PHP
-
+###################################################
+#                                                 #
+# Custom Tab copyright 2017-2025, Andrew Zawadzki #
+#                                                 #
+###################################################
 function read_json_file($file) {
   $json = json_decode(@file_get_contents($file),true);
   if ( ! $json ) {
@@ -9,7 +13,7 @@ function read_json_file($file) {
 }
 
 function create_tab_settings($index,$settings,$addFlag = false) {
-  if ( ! $settings['tabURL'] && ! $settings['page'] && ! $addFlag ) {
+  if ( ! ($settings['tabURL']??"") && ! ($settings['page']??"") && ! $addFlag ) {
     return;
   }
   $pageFiles = json_decode(file_get_contents("/tmp/customtab/pagefiles.json"),true);
@@ -29,6 +33,16 @@ function create_tab_settings($index,$settings,$addFlag = false) {
 	$bookmarkoptions = "";
 	$selectTab = "";
 	$selectURL = "";
+  $settings['tabURL']       = $settings['tabURL'] ??"";
+  $settings['page']         = $settings['page'] ??"";
+  $settings['selectPage']   = $settings['selectPage']??"";
+  $settings['name']         = $settings['name'] ??"";
+  $settings['fullname']     = $settings['fullname'] ??"";
+  $settings['width']        = $settings['width']??"";
+  $settings['height']       = $settings['height']??"";
+  $settings['fontawesome']  = $settings['fontawesome']??"";
+  $settings['position']     = $settings['position']??"";
+
 	switch ($settings['selectPage']) {
 		case 'page':
 			$selectPage = 'selected';
@@ -129,7 +143,7 @@ switch ($_POST['action']) {
     exec("find /usr/local/emhttp/plugins -name '*.page'",$pageFiles);
     foreach ($pageFiles as $page) {
       $file = explode("\n",trim(file_get_contents($page)));
-      unset($pageINI);
+      $pageINI = "";
       foreach ($file as $line) {
         if ( (trim($line) == "---") || (trim($line) == "----") ) {
           break;
@@ -151,6 +165,7 @@ switch ($_POST['action']) {
   case 'add_tab':
     $settings = json_decode($_POST['settings']);
     $index = 0;
+    $o = "";
     foreach ($settings as $tab) {
       $set = tabArray($tab);
       if ( ! $set['tabURL'] && ! $set['page'] ) {

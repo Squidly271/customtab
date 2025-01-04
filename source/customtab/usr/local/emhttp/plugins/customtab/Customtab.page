@@ -3,6 +3,11 @@ Title="Custom Tab"
 Icon="edit"
 ---
 <?PHP
+###################################################
+#                                                 #
+# Custom Tab copyright 2017-2025, Andrew Zawadzki #
+#                                                 #
+###################################################
 $plugin = 'customtab';
 $cfg = parse_plugin_cfg($plugin);
 ?>

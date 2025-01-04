@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "customtab">
 <!ENTITY author    "Andrew Zawadzki">
-<!ENTITY version   "2024.12.07">
+<!ENTITY version   "2025.01.04">
 <!ENTITY md5       "9f2a21653d8706a1b53268f48e94e99c">
 <!ENTITY launch    "Utilities/Customtab">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -13,6 +13,9 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="edit">
 
 <CHANGES>
+###2025.01.04
+- Fixed: PHP8 errors
+
 ###2024.12.07
 - Fixed: Invalid HTML on dropdowns
 
@@ -100,7 +103,7 @@ The 'post-install' script
 echo ""
 echo "----------------------------------------------------"
 echo " &name; has been installed."
-echo " Copyright 2015-2024, Andrew Zawadzki"
+echo " Copyright 2017-2025, Andrew Zawadzki"
 echo " Version: &version;"
 echo "----------------------------------------------------"
 echo ""

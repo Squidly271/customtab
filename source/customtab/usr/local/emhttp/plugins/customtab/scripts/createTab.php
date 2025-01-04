@@ -1,5 +1,10 @@
 #!/usr/bin/php
 <?PHP
+###################################################
+#                                                 #
+# Custom Tab copyright 2017-2025, Andrew Zawadzki #
+#                                                 #
+###################################################
 function create_ini_file($settings,$mode=false) {
   if ( $mode ) {
     $keys = array_keys($settings);
